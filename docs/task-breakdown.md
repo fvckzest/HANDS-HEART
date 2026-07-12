@@ -30,6 +30,26 @@ Each task should be treated as a bounded unit of work with clear inputs, outputs
 - Update docs if implementation details materially change.
 - Run the relevant verification checks before marking a task complete.
 
+## 2.1 Current Implementation Status
+
+Status updated July 12, 2026. “Implementation complete, verification blocked”
+means the code and automated checks are complete, while the named external
+configuration or data is still required for live-flow verification and launch.
+
+| Task | Status | Notes |
+| --- | --- | --- |
+| T001 - Initialize Project Scaffold | Complete | Build, typecheck, lint, and local serve smoke check passed. |
+| T002 - Establish App Shell | Complete | Required routes, providers, shared layout, and responsive shell are in place. Visual QA completed by the project owner. |
+| T003 - Build Homepage Sections | Complete | Placeholder-safe homepage sections are in place and visually approved by the project owner. Final launch copy and product content remain required. |
+| T004 - Create Shared UI Components | Complete | Reusable typed controls, states, product-card shell, and accessible field primitives are in place. |
+| T005 - Build Shopify Client | Implementation complete, verification blocked | Live verification requires Shopify store domain, public Storefront token, and API version. |
+| T006 - Implement Product Queries | Implementation complete, verification blocked | Live verification additionally requires a configured Shopify catalog. |
+| T007 - Implement Cart API Operations | Implementation complete, verification blocked | Live verification additionally requires cart-capable catalog data. |
+| T011 - Build Contact Form | Implementation complete, verification blocked | Client validation and safe status states are in place; delivery verification requires the configured Pages Function and recipient/delivery route. |
+| T012 - Build Contact Pages Function | Implementation complete, verification blocked | Requires Cloudflare Pages deployment plus `CONTACT_DELIVERY_PROVIDER=webhook`, webhook destination, and optional token before live delivery can be tested. |
+
+All remaining tasks are pending their documented dependencies.
+
 ---
 ## 3. Foundation Tasks
 

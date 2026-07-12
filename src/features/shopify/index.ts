@@ -9,6 +9,20 @@ export type {
 } from './config'
 export { ShopifyRequestError, shopifyRequest } from './client'
 export type { ShopifyGraphQLVariables, ShopifyRequestErrorCode } from './client'
+export {
+  fetchCollections,
+  fetchFeaturedProducts,
+  fetchProductByHandle,
+  fetchProducts,
+} from './products'
+export {
+  addCartLine,
+  createCart,
+  fetchCart,
+  removeCartLines,
+  updateCartLineQuantity,
+} from './cart'
+export type { CartLineInput } from './cart'
 export type {
   Cart,
   CartCost,
