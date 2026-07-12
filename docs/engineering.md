@@ -82,6 +82,7 @@ The React app should own the primary public routes.
 
 **Required Routes**
 - `/` - homepage
+- `/about` - Our Story marketing page
 - `/shop` - full product catalog
 - `/products/:handle` - product detail page by Shopify product handle
 - `/cart` - full cart page or cart fallback route
@@ -97,6 +98,7 @@ The project should remain a Vite and React application, but public marketing and
 
 **Prerender Targets**
 - Homepage
+- Our Story page
 - Shop page
 - Product detail pages for known Shopify product handles
 

@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import { SiteLayout } from '../components/SiteLayout'
+import { AboutPage } from '../pages/AboutPage'
 import { CartPage } from '../pages/CartPage'
 import { HomePage } from '../pages/HomePage'
 import { NotFoundPage } from '../pages/NotFoundPage'
@@ -12,6 +13,7 @@ const router = createBrowserRouter([
     Component: SiteLayout,
     children: [
       { index: true, Component: HomePage },
+      { path: 'about', Component: AboutPage },
       { path: 'shop', Component: ShopPage },
       { path: 'products/:handle', Component: ProductPage },
       { path: 'cart', Component: CartPage },

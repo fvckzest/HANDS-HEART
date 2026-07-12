@@ -10,6 +10,7 @@ const heartHandsMark = new URL(
 const primaryLinks = [
   { to: '/', label: 'Home', end: true },
   { to: '/shop', label: 'Shop' },
+  { to: '/about', label: 'Our Story' },
 ]
 
 export function Header() {

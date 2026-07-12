@@ -91,6 +91,7 @@ Create the shared UI foundation and brand-led layout.
 - Build responsive page layout.
 - Build navigation and footer.
 - Add homepage sections from the PRD.
+- Add the user-approved standalone Our Story route.
 - Add placeholder-safe content structure.
 - Ensure the heart hands artwork has a first-viewport placement once available.
 

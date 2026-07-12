@@ -51,7 +51,9 @@ configuration or data is still required for live-flow verification and launch.
 | T011 - Build Contact Form | Implementation complete, verification blocked | Client validation and safe status states are in place; delivery verification requires the configured Pages Function and recipient/delivery route. |
 | T012 - Build Contact Pages Function | Implementation complete, verification blocked | Requires Cloudflare Pages deployment plus `CONTACT_DELIVERY_PROVIDER=webhook`, webhook destination, and optional token before live delivery can be tested. |
 | T013 - Add Metadata And SEO Utilities | Implementation complete, visual QA and live verification pending | Route titles, descriptions, canonical URLs, and Open Graph tags are in place. Product-specific metadata requires Shopify configuration, product imagery, and `VITE_PUBLIC_SITE_URL` before production verification. |
+| T014 - Add Prerendering | Implementation complete, visual QA and live product verification pending | Placeholder-mode builds emit populated static HTML for `/`, `/about`, `/shop`, and `/cart`. Product snapshots require live Shopify configuration plus explicit `SHOPIFY_PRERENDER_PRODUCT_HANDLES`. |
 | T015 - Add Cloudflare Analytics Notes Or Integration | Implementation complete, verification blocked | Cloudflare-managed Web Analytics setup is documented without adding a tracking script. Live verification requires Cloudflare account/Pages project access, a production deployment, and traffic. |
+| User-approved scope addition - About / Our Story route | Implementation complete, visual QA pending | The `/about` route, navigation, route metadata, and static prerender target were added with explicit user approval. Final story/community copy remains a launch-content requirement. |
 
 All remaining tasks are pending their documented dependencies.
 
@@ -96,7 +98,7 @@ All remaining tasks are pending their documented dependencies.
 - Placeholder-safe page shell
 
 **Acceptance Criteria**
-- `/`, `/shop`, `/products/:handle`, and `/cart` routes exist.
+- `/`, `/about`, `/shop`, `/products/:handle`, and `/cart` routes exist.
 - Navigation works.
 - Layout is responsive at a basic level.
 
@@ -302,13 +304,14 @@ All remaining tasks are pending their documented dependencies.
 **Outputs**
 - Route metadata helper
 - Homepage metadata
+- About metadata
 - Shop metadata
 - Product metadata
 - Open Graph support
 - Canonical URL support where practical
 
 **Acceptance Criteria**
-- Homepage, shop, and product pages have appropriate metadata.
+- Homepage, About, shop, and product pages have appropriate metadata.
 - Product metadata uses product data where available.
 
 ### T014 - Add Prerendering
@@ -317,7 +320,7 @@ All remaining tasks are pending their documented dependencies.
 - T013
 
 **Outputs**
-- Build-time prerender setup for public routes where practical
+- Build-time prerender setup for public routes, including `/about`, where practical
 - Product route prerendering for known handles where practical
 
 **Acceptance Criteria**

@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 const footerLinks = [
   { to: '/', label: 'Home', end: true },
   { to: '/shop', label: 'Shop' },
+  { to: '/about', label: 'Our Story' },
   { to: '/cart', label: 'Bag' },
 ]
 

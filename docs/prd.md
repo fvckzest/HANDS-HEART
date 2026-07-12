@@ -69,11 +69,15 @@ The website is intentionally simple. Rather than guiding visitors through a larg
 	Shop Preview
 	Contact
 	Footer
+- About / Our Story (custom route)
 - Shop (Shopify)
 - Product Pages (Shopify)
 - Cart / Checkout (Shopify)
 
-The majority of the experience will take place on the homepage, with Shopify handling product browsing, individual product pages, and checkout. This keeps the website focused, easy to navigate, and scalable as the brand grows.
+The majority of the experience will take place on the homepage and the supporting
+Our Story route, with Shopify handling product browsing, individual product
+pages, and checkout. This keeps the website focused, easy to navigate, and
+scalable as the brand grows.
 
 ---
 
