@@ -38,12 +38,284 @@ a {
 }
 
 .site-shell {
+  position: relative;
+  isolation: isolate;
   min-height: 100vh;
   overflow: hidden;
-  background:
-    radial-gradient(circle at 8% 18%, #f9a3bd 0 4.6rem, transparent 4.7rem),
-    radial-gradient(circle at 92% 7%, #1c64d8 0 6.5rem, transparent 6.6rem),
-    #fff9ed;
+  background: #fff9ed;
+}
+
+.background-decor {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.background-decor__shape,
+.background-decor__cluster,
+.background-decor__dots,
+.background-decor__rays {
+  position: absolute;
+}
+
+.background-decor__shape--top-left {
+  top: -5.5rem;
+  left: -5.5rem;
+  width: clamp(12rem, 22vw, 22rem);
+  aspect-ratio: 1;
+  border-radius: 44% 56% 58% 42% / 46% 38% 62% 54%;
+  background: #1c64d8;
+}
+
+.background-decor__shape--top-right {
+  top: -3.5rem;
+  right: -5rem;
+  width: clamp(11rem, 20vw, 20rem);
+  aspect-ratio: 1;
+  border-radius: 48% 52% 40% 60% / 52% 45% 55% 48%;
+  background: #f9a3bd;
+}
+
+.background-decor__shape--rail-left {
+  top: 22rem;
+  left: -4.25rem;
+  width: 8rem;
+  height: 22rem;
+  border-radius: 999px;
+  background: #f9a3bd;
+}
+
+.background-decor__shape--rail-right {
+  top: 34rem;
+  right: -6.5rem;
+  width: 12rem;
+  height: 25rem;
+  border-radius: 999px 0 0 999px;
+  background: #ff6b2c;
+}
+
+.background-decor__cluster {
+  width: clamp(9rem, 15vw, 15rem);
+  aspect-ratio: 1;
+}
+
+.background-decor__cluster > span {
+  position: absolute;
+  display: block;
+}
+
+.background-decor__cluster--hero-left-medallion {
+  top: 44rem;
+  left: -4.5rem;
+}
+
+.background-decor__cluster--upper-right-arches {
+  top: 19%;
+  right: -4.5rem;
+}
+
+.background-decor__cluster--mid-left-scallop {
+  top: 36%;
+  left: -4.5rem;
+}
+
+.background-decor__cluster--mid-right-arches {
+  top: 52%;
+  right: -4rem;
+}
+
+.background-decor__cluster--lower-left-quarter {
+  top: 69%;
+  left: -4rem;
+}
+
+.background-decor__cluster--footer-right-arches {
+  right: -4rem;
+  bottom: 10rem;
+}
+
+.background-decor__semicircle {
+  overflow: hidden;
+  bottom: 0;
+  left: 0;
+  width: 70%;
+  height: 43%;
+  border-radius: 999px 999px 0 0;
+  background: #10151b;
+}
+
+.background-decor__semicircle::after {
+  position: absolute;
+  inset: 0 0 0 50%;
+  background: #1c64d8;
+  content: "";
+}
+
+.background-decor__disc {
+  width: 38%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+
+.background-decor__disc--blue {
+  top: 16%;
+  right: 2%;
+  background: #1c64d8;
+}
+
+.background-decor__disc--pink {
+  right: 5%;
+  bottom: 6%;
+  background: #f9a3bd;
+}
+
+.background-decor__disc--orange {
+  top: 5%;
+  right: 4%;
+  background: #ff6b2c;
+}
+
+.background-decor__disc--yellow {
+  right: 6%;
+  bottom: 4%;
+  background: #ffca35;
+}
+
+.background-decor__disc--lavender {
+  top: 5%;
+  right: 3%;
+  background: #c9b4ec;
+}
+
+.background-decor__ring {
+  top: 3%;
+  left: 22%;
+  width: 50%;
+  aspect-ratio: 1;
+  border: clamp(0.55rem, 1.2vw, 1rem) solid #f9a3bd;
+  border-radius: 50%;
+  background: #fff9ed;
+}
+
+.background-decor__ring--small {
+  top: 12%;
+  left: 4%;
+  width: 38%;
+}
+
+.background-decor__ring--yellow {
+  border-color: #ffca35;
+}
+
+.background-decor__arch {
+  bottom: 0;
+  width: 46%;
+  height: 72%;
+  border: clamp(1rem, 2vw, 1.7rem) solid;
+  border-bottom: 0;
+  border-radius: 999px 999px 0 0;
+}
+
+.background-decor__arch--orange {
+  left: 0;
+  border-color: #ff6b2c;
+}
+
+.background-decor__arch--blue {
+  right: 5%;
+  border-color: #1c64d8;
+}
+
+.background-decor__arch--pink {
+  left: 2%;
+  border-color: #f9a3bd;
+}
+
+.background-decor__arch--yellow {
+  right: 2%;
+  border-color: #ffca35;
+}
+
+.background-decor__arch--lavender {
+  left: 2%;
+  border-color: #c9b4ec;
+}
+
+.background-decor__scallop {
+  right: 2%;
+  bottom: 0;
+  width: 76%;
+  height: 42%;
+  border-radius: 999px 999px 0 0;
+  background: #ff6b2c;
+  box-shadow: -2.8rem 0 0 #ff6b2c, -5.6rem 0 0 #ff6b2c;
+}
+
+.background-decor__quarter {
+  bottom: 0;
+  left: 0;
+  width: 74%;
+  aspect-ratio: 1;
+  border-radius: 0 100% 0 0;
+  background: #ffca35;
+}
+
+.background-decor__dots {
+  width: clamp(3.5rem, 6vw, 5rem);
+}
+
+.background-decor__dots--header-left {
+  top: 10.5%;
+  left: 2%;
+}
+
+.background-decor__dots--mid-right {
+  top: 47%;
+  right: 2%;
+}
+
+.background-decor__dots--footer-right {
+  right: 3%;
+  bottom: 14rem;
+}
+
+.background-decor__rays {
+  width: clamp(3.75rem, 7vw, 6rem);
+}
+
+.background-decor__rays path {
+  stroke: #10151b;
+  stroke-linecap: round;
+  stroke-width: 3;
+}
+
+.background-decor__rays--header {
+  top: 7rem;
+  left: 28%;
+}
+
+.background-decor__rays--mid-right {
+  top: 33%;
+  right: 4%;
+  transform: rotate(24deg);
+}
+
+.background-decor__rays--footer-left {
+  bottom: 18rem;
+  left: 4%;
+  transform: rotate(-20deg);
+}
+
+.background-decor--shop .background-decor__cluster--upper-right-arches,
+.background-decor--about .background-decor__cluster--mid-right-arches {
+  transform: rotate(14deg) scale(1.12);
+}
+
+.background-decor--about .background-decor__cluster--mid-left-scallop,
+.background-decor--product .background-decor__cluster--lower-left-quarter {
+  transform: rotate(-12deg);
 }
 
 .skip-link {
@@ -184,6 +456,8 @@ a {
 }
 
 .site-main {
+  position: relative;
+  z-index: 1;
   width: min(100%, 76rem);
   min-height: 50vh;
   margin: 0 auto;
@@ -351,6 +625,7 @@ a {
 }
 
 .site-footer {
+  z-index: 1;
   position: relative;
   margin-top: clamp(2rem, 7vw, 5rem);
   border-top: 2px solid #10151b;
@@ -428,6 +703,68 @@ a {
 }
 
 @media (max-width: 44rem) {
+  .background-decor__shape--top-left {
+    top: -3rem;
+    left: -5rem;
+    width: 11rem;
+  }
+
+  .background-decor__shape--top-right {
+    top: 2rem;
+    right: -4.5rem;
+    width: 9rem;
+  }
+
+  .background-decor__shape--rail-left {
+    top: 25rem;
+    left: -3.25rem;
+    width: 5.5rem;
+    height: 15rem;
+  }
+
+  .background-decor__shape--rail-right {
+    top: 42rem;
+    right: -4.5rem;
+    width: 7rem;
+    height: 16rem;
+  }
+
+  .background-decor__cluster {
+    width: 8rem;
+  }
+
+  .background-decor__cluster--hero-left-medallion,
+  .background-decor__cluster--mid-left-scallop,
+  .background-decor__cluster--lower-left-quarter {
+    left: -4.75rem;
+  }
+
+  .background-decor__cluster--upper-right-arches,
+  .background-decor__cluster--mid-right-arches,
+  .background-decor__cluster--footer-right-arches {
+    right: -4.75rem;
+  }
+
+  .background-decor__dots--header-left,
+  .background-decor__dots--mid-right,
+  .background-decor__dots--footer-right {
+    width: 3rem;
+  }
+
+  .background-decor__dots--header-left {
+    left: -0.5rem;
+  }
+
+  .background-decor__dots--mid-right,
+  .background-decor__dots--footer-right {
+    right: -0.5rem;
+  }
+
+  .background-decor__rays--header {
+    top: 9.5rem;
+    left: 43%;
+  }
+
   .site-header {
     padding-right: 0.75rem;
     padding-left: 0.75rem;
