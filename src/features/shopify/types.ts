@@ -54,6 +54,18 @@ export interface Product {
   variants: ProductVariant[]
 }
 
+/** Cursor metadata returned with a bounded Shopify connection page. */
+export interface PageInfo {
+  hasNextPage: boolean
+  endCursor: string | null
+}
+
+/** One normalized, bounded page of products from the Shopify catalog. */
+export interface ProductCatalogPage {
+  products: Product[]
+  pageInfo: PageInfo
+}
+
 export interface Collection {
   id: string
   handle: string

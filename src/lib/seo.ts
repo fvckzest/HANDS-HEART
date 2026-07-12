@@ -1,5 +1,7 @@
 import { useEffect } from 'react'
 
+import { siteCopy } from '../content/siteCopy'
+
 export interface RouteMetadata {
   title: string
   description: string
@@ -146,14 +148,14 @@ export function useRouteMetadata({
 export const homeMetadata: RouteMetadata = {
   title: `${siteName} | Made to connect`,
   description:
-    'Explore Hands Heart, a lifestyle brand centered around the heart hands symbol.',
+    siteCopy.metadata.home,
   pathname: '/',
 }
 
 export const shopMetadata: RouteMetadata = {
   title: `Shop the collection | ${siteName}`,
   description:
-    'Browse the Hands Heart collection. Product details and availability appear when the catalog is connected.',
+    siteCopy.metadata.shop,
   pathname: '/shop',
 }
 
@@ -175,8 +177,7 @@ export function getProductMetadata({
   if (!normalizedTitle) {
     return {
       title: `Product details | ${siteName}`,
-      description:
-        'Product details from the Hands Heart collection will appear here when available.',
+      description: siteCopy.metadata.productFallback,
       pathname: normalizedHandle
         ? `/products/${encodeURIComponent(normalizedHandle)}`
         : '/products',
@@ -186,7 +187,7 @@ export function getProductMetadata({
   return {
     title: `${normalizedTitle} | ${siteName}`,
     description:
-      normalizedDescription || `Discover ${normalizedTitle} from ${siteName}.`,
+      normalizedDescription || siteCopy.metadata.productFallback,
     pathname: normalizedHandle
       ? `/products/${encodeURIComponent(normalizedHandle)}`
       : '/products',

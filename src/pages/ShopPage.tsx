@@ -1,4 +1,5 @@
-import { useQuery } from '@tanstack/react-query'
+import { useInfiniteQuery } from '@tanstack/react-query'
+import { useMemo } from 'react'
 
 import {
   fetchProducts,
@@ -18,11 +19,28 @@ export function ShopPage() {
 
   const configured = isShopifyConfigured()
   const configuration = getShopifyConfiguration()
-  const productsQuery = useQuery({
+  const productsQuery = useInfiniteQuery({
     queryKey: ['shopify', 'products', 'shop'],
-    queryFn: () => fetchProducts(),
+    queryFn: ({ pageParam }) => fetchProducts(24, pageParam),
     enabled: configured,
+    initialPageParam: null as string | null,
+    getNextPageParam: (lastPage) =>
+      lastPage.pageInfo.hasNextPage ? lastPage.pageInfo.endCursor ?? undefined : undefined,
   })
+  const products = useMemo(() => {
+    const productIds = new Set<string>()
+
+    return (productsQuery.data?.pages ?? []).flatMap((page) =>
+      page.products.filter((product) => {
+        if (productIds.has(product.id)) {
+          return false
+        }
+
+        productIds.add(product.id)
+        return true
+      }),
+    )
+  }, [productsQuery.data])
 
   return (
     <div className="space-y-12 sm:space-y-16">
@@ -32,10 +50,16 @@ export function ShopPage() {
         <ShopConfigurationState missing={configuration.missing} />
       ) : productsQuery.isPending ? (
         <ShopLoadingState />
-      ) : productsQuery.isError ? (
+      ) : productsQuery.isError && !productsQuery.data ? (
         <ShopCatalog error onRetry={() => void productsQuery.refetch()} />
       ) : (
-        <ShopCatalog products={productsQuery.data} />
+        <ShopCatalog
+          hasNextPage={productsQuery.hasNextPage}
+          isLoadingMore={productsQuery.isFetchingNextPage}
+          loadMoreError={productsQuery.isFetchNextPageError}
+          onLoadMore={() => void productsQuery.fetchNextPage()}
+          products={products}
+        />
       )}
     </div>
   )

@@ -5,12 +5,13 @@ import {
   OriginStorySection,
   PrinciplesSection,
 } from '../components/about/AboutSections'
+import { siteCopy } from '../content/siteCopy'
 import { type RouteMetadata, useRouteMetadata } from '../lib/seo'
 
 const aboutMetadata: RouteMetadata = {
   title: 'Our Story | Hands Heart',
   description:
-    'Learn about the Hands Heart story, values, and the simple gesture that brings people together.',
+    siteCopy.metadata.about,
   pathname: '/about',
 }
 

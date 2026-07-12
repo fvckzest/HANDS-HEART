@@ -18,7 +18,7 @@ export function LoadingState({
     <div
       aria-live="polite"
       className={[
-        'rounded-[2rem] border-2 border-[#10151b] bg-[#9fd6f5] p-6 text-[#10151b] shadow-[3px_3px_0_#10151b]',
+        'rounded-[2rem] border-2 border-[var(--color-ink)] bg-[var(--color-sky)] p-6 text-[var(--color-ink)] shadow-[3px_3px_0_var(--color-ink)]',
         className,
       ]
         .filter(Boolean)
@@ -26,9 +26,9 @@ export function LoadingState({
       role="status"
     >
       <span className="mb-4 flex gap-1.5" aria-hidden="true">
-        <span className="size-3 animate-bounce rounded-full bg-[#10151b] [animation-delay:-0.25s]" />
-        <span className="size-3 animate-bounce rounded-full bg-[#10151b] [animation-delay:-0.125s]" />
-        <span className="size-3 animate-bounce rounded-full bg-[#10151b]" />
+        <span className="size-3 animate-bounce rounded-full bg-[var(--color-ink)] [animation-delay:-0.25s]" />
+        <span className="size-3 animate-bounce rounded-full bg-[var(--color-ink)] [animation-delay:-0.125s]" />
+        <span className="size-3 animate-bounce rounded-full bg-[var(--color-ink)]" />
       </span>
       <p className="font-black uppercase tracking-wide">{title}</p>
       {description ? <p className="mt-2 max-w-prose">{description}</p> : null}
@@ -40,14 +40,14 @@ export function EmptyState({ title, description, action, className }: StateProps
   return (
     <section
       className={[
-        'rounded-[2rem] border-2 border-[#10151b] bg-[#c9b4ec] p-6 text-[#10151b] shadow-[3px_3px_0_#10151b]',
+        'rounded-[2rem] border-2 border-[var(--color-ink)] bg-[var(--color-lavender)] p-6 text-[var(--color-ink)] shadow-[3px_3px_0_var(--color-ink)]',
         className,
       ]
         .filter(Boolean)
         .join(' ')}
     >
       <span
-        className="mb-4 grid size-12 place-items-center rounded-full border-2 border-[#10151b] bg-[#fff9ed] text-2xl"
+        className="mb-4 grid size-12 place-items-center rounded-full border-2 border-[var(--color-ink)] bg-[var(--color-cream)] text-2xl"
         aria-hidden="true"
       >
         ♥
@@ -75,7 +75,7 @@ export function ErrorState({
     <section
       aria-live="assertive"
       className={[
-        'rounded-[2rem] border-2 border-[#10151b] bg-[#f9a3bd] p-6 text-[#10151b] shadow-[3px_3px_0_#10151b]',
+        'rounded-[2rem] border-2 border-[var(--color-ink)] bg-[var(--color-pink)] p-6 text-[var(--color-ink)] shadow-[3px_3px_0_var(--color-ink)]',
         className,
       ]
         .filter(Boolean)
@@ -83,7 +83,7 @@ export function ErrorState({
       role="alert"
     >
       <span
-        className="mb-4 grid size-12 place-items-center rounded-full border-2 border-[#10151b] bg-[#fff9ed] text-2xl"
+        className="mb-4 grid size-12 place-items-center rounded-full border-2 border-[var(--color-ink)] bg-[var(--color-cream)] text-2xl"
         aria-hidden="true"
       >
         !

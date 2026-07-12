@@ -3,7 +3,9 @@ import type {
   Collection,
   CommerceImage,
   Money,
+  PageInfo,
   Product,
+  ProductCatalogPage,
   ProductOption,
   ProductVariant,
   SelectedOption,
@@ -99,8 +101,12 @@ const FEATURED_PRODUCTS_QUERY = `
 const PRODUCTS_QUERY = `
   ${PRODUCT_FRAGMENT}
 
-  query Products($first: Int!) {
-    products(first: $first, sortKey: CREATED_AT, reverse: true) {
+  query Products($first: Int!, $after: String) {
+    products(first: $first, after: $after, sortKey: CREATED_AT, reverse: true) {
+      pageInfo {
+        hasNextPage
+        endCursor
+      }
       edges {
         node {
           ...ProductDetails
@@ -178,6 +184,16 @@ interface StorefrontConnection<TNode> {
   edges: Array<{ node: TNode | null } | null> | null
 }
 
+interface StorefrontPageInfo {
+  hasNextPage: boolean
+  endCursor: string | null
+}
+
+interface StorefrontProductConnection
+  extends StorefrontConnection<StorefrontProduct> {
+  pageInfo: StorefrontPageInfo | null
+}
+
 interface StorefrontProduct {
   id: string
   handle: string
@@ -207,7 +223,7 @@ interface FeaturedProductsResponse {
 }
 
 interface ProductsResponse {
-  products: StorefrontConnection<StorefrontProduct> | null
+  products: StorefrontProductConnection | null
 }
 
 interface ProductByHandleResponse {
@@ -234,6 +250,15 @@ function normalizeConnection<TNode>(
   }
 
   return connection.edges.flatMap((edge) => (edge?.node ? [edge.node] : []))
+}
+
+function normalizePageInfo(
+  pageInfo: StorefrontPageInfo | null | undefined,
+): PageInfo {
+  return {
+    hasNextPage: pageInfo?.hasNextPage ?? false,
+    endCursor: pageInfo?.endCursor ?? null,
+  }
 }
 
 function normalizeMoney(money: StorefrontMoney): Money {
@@ -329,15 +354,23 @@ export async function fetchFeaturedProducts(
   return normalizeConnection(response.products).map(normalizeProduct)
 }
 
-/** Fetches a bounded catalog listing for the custom shop page. */
+/**
+ * Fetches one bounded Shopify catalog page. Pass the prior page's end cursor
+ * to continue the same newest-first catalog sequence.
+ */
 export async function fetchProducts(
   limit = DEFAULT_PRODUCT_LIMIT,
-): Promise<Product[]> {
+  after: string | null = null,
+): Promise<ProductCatalogPage> {
   const response = await shopifyRequest<ProductsResponse>(PRODUCTS_QUERY, {
     first: normalizeLimit(limit, DEFAULT_PRODUCT_LIMIT),
+    after,
   })
 
-  return normalizeConnection(response.products).map(normalizeProduct)
+  return {
+    products: normalizeConnection(response.products).map(normalizeProduct),
+    pageInfo: normalizePageInfo(response.products?.pageInfo),
+  }
 }
 
 /** Fetches one product by its stable Shopify handle, or null when it is absent. */

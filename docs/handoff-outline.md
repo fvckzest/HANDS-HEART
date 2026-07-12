@@ -1,15 +1,21 @@
 ---
 type: Handoff Outline
-status: draft
+status: superseded
 client: "[[Hands Heart]]"
 project: Hands Heart Website Redesign
 created: July 11, 2026
 version: 0.1
+superseded_by: docs/handoff.md
 references:
+  - docs/handoff.md
   - docs/engineering.md
   - docs/asset-checklist.md
 ---
 # Hands Heart Handoff Outline
+
+> Superseded by the project-specific [Hands Heart Handoff Runbook](handoff.md).
+> Retained below as historical planning context; use the runbook for current
+> operating instructions.
 
 ## 1. Purpose
 

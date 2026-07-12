@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 
+import { siteCopy } from '../../content/siteCopy'
 import { useCart } from '../../features/cart'
 import type { CartLine, Money } from '../../features/shopify'
 import { EmptyState, ErrorState, LoadingState } from '../ui'
@@ -57,8 +58,8 @@ function CartLineItem({ line }: { line: CartLine }) {
   }
 
   return (
-    <li className="grid grid-cols-[5.5rem_minmax(0,1fr)] gap-4 border-b-2 border-[#10151b] py-5 last:border-b-0">
-      <div className="grid aspect-square place-items-center overflow-hidden rounded-[1.4rem] border-2 border-[#10151b] bg-[#c9b4ec] p-2">
+    <li className="grid grid-cols-[5.5rem_minmax(0,1fr)] gap-4 border-b-2 border-[var(--color-ink)] py-5 last:border-b-0">
+      <div className="grid aspect-square place-items-center overflow-hidden rounded-[1.4rem] border-2 border-[var(--color-ink)] bg-[var(--color-lavender)] p-2">
         {image ? (
           <img
             alt={image.altText ?? `${lineTitle(line)} product image`}
@@ -81,7 +82,7 @@ function CartLineItem({ line }: { line: CartLine }) {
               {lineTitle(line)}
             </h3>
             {summary ? (
-              <p className="mt-1 text-sm font-bold text-[#51545a]">{summary}</p>
+              <p className="mt-1 text-sm font-bold text-[var(--color-ink-subtle)]">{summary}</p>
             ) : null}
           </div>
           <p className="shrink-0 font-black">{formatMoney(line.cost.totalAmount)}</p>
@@ -90,12 +91,12 @@ function CartLineItem({ line }: { line: CartLine }) {
         <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
           <div
             aria-label={`Quantity for ${lineTitle(line)}`}
-            className="inline-flex items-center overflow-hidden rounded-full border-2 border-[#10151b] bg-[#fff9ed]"
+            className="inline-flex items-center overflow-hidden rounded-full border-2 border-[var(--color-ink)] bg-[var(--color-cream)]"
             role="group"
           >
             <button
               aria-label={`Decrease quantity of ${lineTitle(line)}`}
-              className="grid size-9 place-items-center border-r-2 border-[#10151b] text-lg font-black transition hover:bg-[#ffca35] disabled:cursor-wait disabled:opacity-60"
+              className="grid size-9 place-items-center border-r-2 border-[var(--color-ink)] text-lg font-black transition hover:bg-[var(--color-yellow)] disabled:cursor-wait disabled:opacity-60"
               disabled={isMutating}
               onClick={decreaseQuantity}
               type="button"
@@ -107,7 +108,7 @@ function CartLineItem({ line }: { line: CartLine }) {
             </span>
             <button
               aria-label={`Increase quantity of ${lineTitle(line)}`}
-              className="grid size-9 place-items-center border-l-2 border-[#10151b] text-lg font-black transition hover:bg-[#ffca35] disabled:cursor-wait disabled:opacity-60"
+              className="grid size-9 place-items-center border-l-2 border-[var(--color-ink)] text-lg font-black transition hover:bg-[var(--color-yellow)] disabled:cursor-wait disabled:opacity-60"
               disabled={isMutating}
               onClick={() => void updateItemQuantity(line.id, line.quantity + 1)}
               type="button"
@@ -116,7 +117,7 @@ function CartLineItem({ line }: { line: CartLine }) {
             </button>
           </div>
           <button
-            className="font-black text-sm uppercase underline decoration-2 underline-offset-4 transition hover:text-[#1c64d8] disabled:cursor-wait disabled:opacity-60"
+            className="font-black text-sm uppercase underline decoration-2 underline-offset-4 transition hover:text-[var(--color-blue)] disabled:cursor-wait disabled:opacity-60"
             disabled={isMutating}
             onClick={() => void removeItem(line.id)}
             type="button"
@@ -137,20 +138,20 @@ function CartSummary() {
   }
 
   return (
-    <section className="mt-6 rounded-[1.7rem] border-2 border-[#10151b] bg-[#ffca35] p-5 shadow-[3px_3px_0_#10151b]">
+    <section className="mt-6 rounded-[1.7rem] border-2 border-[var(--color-ink)] bg-[var(--color-yellow)] p-5 shadow-[3px_3px_0_var(--color-ink)]">
       <div className="flex items-center justify-between gap-4 text-base font-black">
         <span>Subtotal</span>
         <span>{formatMoney(cart.cost.subtotalAmount)}</span>
       </div>
-      <div className="mt-3 flex items-center justify-between gap-4 border-t-2 border-[#10151b] pt-3 text-xl font-black">
+      <div className="mt-3 flex items-center justify-between gap-4 border-t-2 border-[var(--color-ink)] pt-3 text-xl font-black">
         <span>Total</span>
         <span>{formatMoney(cart.cost.totalAmount)}</span>
       </div>
       <p className="mt-3 text-sm font-bold leading-5">
-        Shipping and any applicable taxes are confirmed in Shopify checkout.
+        {siteCopy.cart.checkoutNote}
       </p>
       <a
-        className="mt-5 inline-flex min-h-12 w-full items-center justify-center gap-3 rounded-full border-2 border-[#10151b] bg-[#10151b] px-5 py-3 font-black uppercase tracking-wide text-[#fff9ed] shadow-[2px_2px_0_#10151b] transition hover:bg-[#26303a] focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[#ff6391]"
+        className="mt-5 inline-flex min-h-12 w-full items-center justify-center gap-3 rounded-full border-2 border-[var(--color-ink)] bg-[var(--color-ink)] px-5 py-3 font-black uppercase tracking-wide text-[var(--color-cream)] shadow-[2px_2px_0_var(--color-ink)] transition hover:bg-[var(--color-ink-soft)] focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-pink-accent)]"
         href={cart.checkoutUrl}
         onClick={(event) => {
           if (isMutating) {
@@ -181,8 +182,8 @@ export function CartContents({ compact = false }: CartContentsProps) {
     return (
       <EmptyState
         className={compact ? 'p-5' : undefined}
-        description="This development preview is waiting for the Shopify store connection. No cart request was made while configuration is incomplete."
-        title="Your bag is in setup mode"
+        description={siteCopy.cart.setupDescription}
+        title={siteCopy.cart.setupTitle}
       />
     )
   }
@@ -191,7 +192,7 @@ export function CartContents({ compact = false }: CartContentsProps) {
     return (
       <LoadingState
         className={compact ? 'p-5' : undefined}
-        description="Gathering the latest pieces in your Shopify bag."
+        description="Gathering the latest pieces in your bag."
         title="Loading your bag"
       />
     )
@@ -213,7 +214,7 @@ export function CartContents({ compact = false }: CartContentsProps) {
       <EmptyState
         action={
           <Link
-            className="inline-flex min-h-11 items-center gap-2 rounded-full border-2 border-[#10151b] bg-[#10151b] px-5 py-2 font-black uppercase tracking-wide text-[#fff9ed] shadow-[2px_2px_0_#10151b] transition hover:bg-[#26303a]"
+            className="inline-flex min-h-11 items-center gap-2 rounded-full border-2 border-[var(--color-ink)] bg-[var(--color-ink)] px-5 py-2 font-black uppercase tracking-wide text-[var(--color-cream)] shadow-[2px_2px_0_var(--color-ink)] transition hover:bg-[var(--color-ink-soft)]"
             to="/shop"
           >
             Browse the collection <span aria-hidden="true">→</span>
@@ -222,7 +223,7 @@ export function CartContents({ compact = false }: CartContentsProps) {
         className={compact ? 'p-5' : undefined}
         description={
           cartId
-            ? 'This Shopify bag is ready for a new favorite.'
+            ? 'Your bag has room for a new favorite.'
             : 'Choose a piece from the collection and it will appear here.'
         }
         title="Your bag is ready for a little heart"
@@ -233,8 +234,8 @@ export function CartContents({ compact = false }: CartContentsProps) {
   return (
     <div>
       {queryError || mutationError ? (
-        <p aria-live="assertive" className="mb-4 rounded-[1.2rem] border-2 border-[#10151b] bg-[#f9a3bd] px-4 py-3 text-sm font-bold">
-          We couldn’t finish that bag update. Your latest confirmed Shopify bag is still shown.
+        <p aria-live="assertive" className="mb-4 rounded-[1.2rem] border-2 border-[var(--color-ink)] bg-[var(--color-pink)] px-4 py-3 text-sm font-bold">
+          We couldn’t finish that bag update. Your latest confirmed bag is still shown.
         </p>
       ) : null}
       <ul aria-label="Bag items" className="m-0 list-none p-0">

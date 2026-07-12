@@ -23,14 +23,14 @@ export function ProductGallery({
 
   return (
     <section aria-label={`${productTitle} gallery`}>
-      <div className="relative grid aspect-square place-items-center overflow-hidden rounded-[2.5rem] border-2 border-[#10151b] bg-[#c9b4ec] p-5 shadow-[5px_5px_0_#10151b] sm:p-9">
+      <div className="relative grid aspect-square place-items-center overflow-hidden rounded-[2.5rem] border-2 border-[var(--color-ink)] bg-[var(--color-lavender)] p-5 shadow-[5px_5px_0_var(--color-ink)] sm:p-9">
         <span
           aria-hidden="true"
-          className="absolute -right-8 -top-8 size-32 rounded-full bg-[#ffca35]"
+          className="absolute -right-8 -top-8 size-32 rounded-full bg-[var(--color-yellow)]"
         />
         <span
           aria-hidden="true"
-          className="absolute -bottom-5 -left-4 size-24 rounded-full bg-[#ff6b2c]"
+          className="absolute -bottom-5 -left-4 size-24 rounded-full bg-[var(--color-orange)]"
         />
         {mainImage ? (
           <img
@@ -39,7 +39,7 @@ export function ProductGallery({
             src={mainImage.url}
           />
         ) : (
-          <div className="relative z-10 grid h-full w-full place-items-center rounded-[1.7rem] border-2 border-dashed border-[#10151b] bg-[#fff9ed] p-8 text-center">
+          <div className="relative z-10 grid h-full w-full place-items-center rounded-[1.7rem] border-2 border-dashed border-[var(--color-ink)] bg-[var(--color-cream)] p-8 text-center">
             <span aria-hidden="true" className="text-5xl">♥</span>
             <p className="mt-3 max-w-48 font-black uppercase tracking-wide">
               Product image coming soon
@@ -58,8 +58,8 @@ export function ProductGallery({
                 aria-label={`View image ${index + 1} of ${galleryImages.length}`}
                 aria-pressed={isActive}
                 className={[
-                  'size-20 shrink-0 overflow-hidden rounded-[1.2rem] border-2 border-[#10151b] bg-[#fff9ed] p-1.5 transition sm:size-24',
-                  isActive ? 'bg-[#ffca35] shadow-[2px_2px_0_#10151b]' : 'hover:bg-[#f9a3bd]',
+                  'size-20 shrink-0 overflow-hidden rounded-[1.2rem] border-2 border-[var(--color-ink)] bg-[var(--color-cream)] p-1.5 transition sm:size-24',
+                  isActive ? 'bg-[var(--color-yellow)] shadow-[2px_2px_0_var(--color-ink)]' : 'hover:bg-[var(--color-pink)]',
                 ].join(' ')}
                 key={imageKey(image)}
                 onClick={() => onSelectImage(image)}

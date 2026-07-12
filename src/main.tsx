@@ -2,7 +2,10 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 
 import { App } from './App'
+import { applySiteTheme } from './content/siteTheme'
 import './styles.css'
+
+applySiteTheme()
 
 const root = document.getElementById('root')
 

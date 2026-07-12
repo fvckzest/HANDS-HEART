@@ -12,6 +12,7 @@ import {
   ProductNotFoundState,
   ProductUnconfiguredState,
 } from '../components/product/ProductStates'
+import { siteCopy } from '../content/siteCopy'
 import {
   getProductMetadata,
   type RouteMetadata,
@@ -55,7 +56,7 @@ export function ProductPage() {
     metadata = {
       title: 'Product details | Hands Heart',
       description:
-        'Connect the Hands Heart catalog to see product details and availability.',
+        siteCopy.product.setupDescription,
       pathname: productPath,
     }
   } else if (productQuery.isError) {
@@ -68,7 +69,7 @@ export function ProductPage() {
   } else {
     metadata = {
       title: 'Loading product | Hands Heart',
-      description: 'Loading product details from the Hands Heart collection.',
+      description: 'Getting this Hands Heart piece ready for you.',
       pathname: productPath,
     }
   }

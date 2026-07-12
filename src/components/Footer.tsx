@@ -1,5 +1,7 @@
 import { NavLink } from 'react-router-dom'
 
+import { siteCopy } from '../content/siteCopy'
+
 const footerLinks = [
   { to: '/', label: 'Home', end: true },
   { to: '/shop', label: 'Shop' },
@@ -14,7 +16,7 @@ export function Footer() {
         <div>
           <p className="site-footer__brand">Hands Heart</p>
           <p className="site-footer__status">
-            Storefront shell · placeholder content
+            {siteCopy.footer.status}
           </p>
         </div>
 
@@ -32,7 +34,7 @@ export function Footer() {
         </nav>
 
         <p className="site-footer__legal">
-          Legal links will be added with approved launch content.
+          {siteCopy.footer.legal}
         </p>
       </div>
     </footer>

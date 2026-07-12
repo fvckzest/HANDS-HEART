@@ -2,6 +2,7 @@ import { useState, type FormEvent } from 'react'
 
 import { Button } from '../../components/ui/Button'
 import { TextAreaField, TextField } from '../../components/ui/FormFields'
+import { siteCopy } from '../../content/siteCopy'
 
 import type { ContactSubmission, ContactSubmitHandler } from './types'
 
@@ -95,7 +96,7 @@ export function ContactForm({ onSubmit }: ContactFormProps) {
 
   const statusMessage =
     status === 'configuration-error'
-      ? 'Message delivery is not configured yet. Please check back soon.'
+      ? 'We can’t receive messages just now. Please check back soon.'
       : status === 'error'
         ? 'Your message could not be sent. Please try again in a moment.'
         : status === 'success'
@@ -104,27 +105,27 @@ export function ContactForm({ onSubmit }: ContactFormProps) {
 
   return (
     <section aria-labelledby="contact-heading" className="relative pb-3" id="contact">
-      <div className="relative isolate overflow-hidden rounded-[2.5rem] border-2 border-[#10151b] bg-[#fff9ed] p-5 shadow-[4px_4px_0_#10151b] sm:rounded-[4rem] sm:p-10">
-        <div aria-hidden="true" className="absolute -left-14 bottom-0 -z-10 h-40 w-40 rounded-tr-full bg-[#ff6b2c]" />
-        <div aria-hidden="true" className="absolute -right-12 top-0 -z-10 h-44 w-44 rounded-full bg-[#f9a3bd]" />
-        <div className="grid overflow-hidden rounded-[2rem] border-2 border-[#10151b] bg-[#fff9ed] lg:grid-cols-[1fr_0.92fr] lg:rounded-[3rem]">
+      <div className="relative isolate overflow-hidden rounded-[2.5rem] border-2 border-[var(--color-ink)] bg-[var(--color-cream)] p-5 shadow-[4px_4px_0_var(--color-ink)] sm:rounded-[4rem] sm:p-10">
+        <div aria-hidden="true" className="absolute -left-14 bottom-0 -z-10 h-40 w-40 rounded-tr-full bg-[var(--color-orange)]" />
+        <div aria-hidden="true" className="absolute -right-12 top-0 -z-10 h-44 w-44 rounded-full bg-[var(--color-pink)]" />
+        <div className="grid overflow-hidden rounded-[2rem] border-2 border-[var(--color-ink)] bg-[var(--color-cream)] lg:grid-cols-[1fr_0.92fr] lg:rounded-[3rem]">
           <div className="p-6 sm:p-9">
-            <span className="inline-flex rounded-full border-2 border-[#10151b] bg-[#ffca35] px-4 py-2 font-['Arial_Rounded_MT_Bold','Trebuchet_MS',sans-serif] text-xs font-black uppercase tracking-wide">
-              Contact placeholder
+            <span className="inline-flex rounded-full border-2 border-[var(--color-ink)] bg-[var(--color-yellow)] px-4 py-2 font-['Arial_Rounded_MT_Bold','Trebuchet_MS',sans-serif] text-xs font-black uppercase tracking-wide">
+              {siteCopy.contact.eyebrow}
             </span>
             <h2 className="mt-5 font-['Arial_Rounded_MT_Bold','Trebuchet_MS',sans-serif] text-4xl font-black uppercase leading-none tracking-[-0.065em] sm:text-5xl" id="contact-heading">
-              Send us a note<span className="text-[#ff6391]">.</span>
+              Send us a note<span className="text-[var(--color-pink-accent)]">.</span>
             </h2>
             <p className="mt-3 max-w-xl text-sm leading-6 sm:text-base">
-              [Placeholder contact copy — the delivery address and final response details will be configured before launch.]
+              {siteCopy.contact.intro}
             </p>
 
             {statusMessage ? (
               <p
                 aria-live="polite"
                 className={[
-                  'mt-5 rounded-2xl border-2 border-[#10151b] px-4 py-3 text-sm font-bold',
-                  status === 'success' ? 'bg-[#d9f3df]' : 'bg-[#f9a3bd]',
+                  'mt-5 rounded-2xl border-2 border-[var(--color-ink)] px-4 py-3 text-sm font-bold',
+                  status === 'success' ? 'bg-[var(--color-green-pale)]' : 'bg-[var(--color-pink)]',
                 ].join(' ')}
                 role={status === 'success' ? 'status' : 'alert'}
               >
@@ -184,20 +185,20 @@ export function ContactForm({ onSubmit }: ContactFormProps) {
             </form>
           </div>
 
-          <div className="relative isolate min-h-72 overflow-hidden border-t-2 border-[#10151b] bg-[#9fd6f5] p-8 lg:border-l-2 lg:border-t-0 sm:p-12">
-            <div aria-hidden="true" className="absolute -left-10 top-10 h-36 w-36 rounded-full bg-[#1c64d8]" />
-            <div aria-hidden="true" className="absolute -right-12 bottom-0 h-44 w-44 rounded-tl-full bg-[#ffca35]" />
-            <div aria-hidden="true" className="absolute bottom-6 left-8 h-20 w-20 rounded-full border-2 border-[#10151b] bg-[#ff6b2c]" />
-            <div className="relative mx-auto mt-3 max-w-sm rounded-[2.5rem] border-[0.9rem] border-[#1c64d8] bg-[#fff9ed] p-6 shadow-[4px_4px_0_#10151b]">
+          <div className="relative isolate min-h-72 overflow-hidden border-t-2 border-[var(--color-ink)] bg-[var(--color-sky)] p-8 lg:border-l-2 lg:border-t-0 sm:p-12">
+            <div aria-hidden="true" className="absolute -left-10 top-10 h-36 w-36 rounded-full bg-[var(--color-blue)]" />
+            <div aria-hidden="true" className="absolute -right-12 bottom-0 h-44 w-44 rounded-tl-full bg-[var(--color-yellow)]" />
+            <div aria-hidden="true" className="absolute bottom-6 left-8 h-20 w-20 rounded-full border-2 border-[var(--color-ink)] bg-[var(--color-orange)]" />
+            <div className="relative mx-auto mt-3 max-w-sm rounded-[2.5rem] border-[0.9rem] border-[var(--color-blue)] bg-[var(--color-cream)] p-6 shadow-[4px_4px_0_var(--color-ink)]">
               <img
                 alt="Hands forming a heart"
                 className="relative z-10 mx-auto block w-full"
                 src={new URL('../../../assets/brand/heart-hands.svg', import.meta.url).href}
               />
             </div>
-            <div className="relative z-10 mt-7 rounded-[1.75rem] border-2 border-[#10151b] bg-[#fff9ed] p-5 shadow-[3px_3px_0_#10151b]">
-              <p className="font-['Arial_Rounded_MT_Bold','Trebuchet_MS',sans-serif] text-sm font-black uppercase">Every message matters</p>
-              <p className="mt-2 text-sm leading-6">We&apos;ll share final contact details and response expectations before launch.</p>
+            <div className="relative z-10 mt-7 rounded-[1.75rem] border-2 border-[var(--color-ink)] bg-[var(--color-cream)] p-5 shadow-[3px_3px_0_var(--color-ink)]">
+              <p className="font-['Arial_Rounded_MT_Bold','Trebuchet_MS',sans-serif] text-sm font-black uppercase">{siteCopy.contact.sideTitle}</p>
+              <p className="mt-2 text-sm leading-6">{siteCopy.contact.sideDescription}</p>
             </div>
           </div>
         </div>

@@ -74,20 +74,20 @@ export function CartDrawer() {
     <div className="fixed inset-0 z-50 flex justify-end" role="presentation">
       <button
         aria-label="Close bag"
-        className="absolute inset-0 cursor-default bg-[#10151b]/45"
+        className="absolute inset-0 cursor-default bg-[var(--color-ink)]/45"
         onClick={closeDrawer}
         type="button"
       />
       <aside
         aria-labelledby="cart-drawer-title"
         aria-modal="true"
-        className="relative z-10 flex h-full w-full max-w-xl flex-col overflow-y-auto border-l-2 border-[#10151b] bg-[#fff9ed] p-5 shadow-[-5px_0_0_#10151b] sm:p-7"
+        className="relative z-10 flex h-full w-full max-w-xl flex-col overflow-y-auto border-l-2 border-[var(--color-ink)] bg-[var(--color-cream)] p-5 shadow-[-5px_0_0_var(--color-ink)] sm:p-7"
         ref={drawerRef}
         role="dialog"
       >
-        <div className="flex items-start justify-between gap-4 border-b-2 border-[#10151b] pb-5">
+        <div className="flex items-start justify-between gap-4 border-b-2 border-[var(--color-ink)] pb-5">
           <div>
-            <p className="font-['Arial_Rounded_MT_Bold','Trebuchet_MS',sans-serif] text-xs font-black uppercase tracking-[0.12em] text-[#1c64d8]">
+            <p className="font-['Arial_Rounded_MT_Bold','Trebuchet_MS',sans-serif] text-xs font-black uppercase tracking-[0.12em] text-[var(--color-blue)]">
               Your bag · {itemCount} {itemCount === 1 ? 'item' : 'items'}
             </p>
             <h2
@@ -99,7 +99,7 @@ export function CartDrawer() {
           </div>
           <button
             aria-label="Close bag"
-            className="grid size-11 shrink-0 place-items-center rounded-full border-2 border-[#10151b] bg-[#f9a3bd] text-2xl font-black shadow-[2px_2px_0_#10151b] transition hover:bg-[#ffb9cb]"
+            className="grid size-11 shrink-0 place-items-center rounded-full border-2 border-[var(--color-ink)] bg-[var(--color-pink)] text-2xl font-black shadow-[2px_2px_0_var(--color-ink)] transition hover:bg-[var(--color-pink-light)]"
             onClick={closeDrawer}
             ref={closeButtonRef}
             type="button"
@@ -112,7 +112,7 @@ export function CartDrawer() {
           <CartContents compact />
         </div>
         <Link
-          className="mt-auto inline-flex min-h-11 items-center justify-center rounded-full border-2 border-[#10151b] bg-[#fff9ed] px-5 py-2 text-sm font-black uppercase tracking-wide shadow-[2px_2px_0_#10151b] transition hover:bg-[#9fd6f5]"
+          className="mt-auto inline-flex min-h-11 items-center justify-center rounded-full border-2 border-[var(--color-ink)] bg-[var(--color-cream)] px-5 py-2 text-sm font-black uppercase tracking-wide shadow-[2px_2px_0_var(--color-ink)] transition hover:bg-[var(--color-sky)]"
           onClick={closeDrawer}
           to="/cart"
         >

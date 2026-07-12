@@ -34,7 +34,7 @@ function FieldMessages({
     <div className="mt-2 text-sm">
       {helpText ? <p id={descriptionId}>{helpText}</p> : null}
       {error ? (
-        <p className="mt-1 font-bold text-[#8f193d]" id={errorId} role="alert">
+        <p className="mt-1 font-bold text-[var(--color-error)]" id={errorId} role="alert">
           {error}
         </p>
       ) : null}
@@ -75,7 +75,7 @@ export function TextField({
         {...props}
         aria-describedby={describedBy(descriptionId, errorId, error, helpText)}
         aria-invalid={error ? true : undefined}
-        className="min-h-11 w-full rounded-full border-2 border-[#10151b] bg-[#fff9ed] px-4 py-2.5 text-[#10151b] placeholder:text-[#59616a]"
+        className="min-h-11 w-full rounded-full border-2 border-[var(--color-ink)] bg-[var(--color-cream)] px-4 py-2.5 text-[var(--color-ink)] placeholder:text-[var(--color-muted)]"
         id={id}
       />
       <FieldMessages
@@ -111,7 +111,7 @@ export function TextAreaField({
         {...props}
         aria-describedby={describedBy(descriptionId, errorId, error, helpText)}
         aria-invalid={error ? true : undefined}
-        className="w-full rounded-[1.5rem] border-2 border-[#10151b] bg-[#fff9ed] px-4 py-3 text-[#10151b] placeholder:text-[#59616a]"
+        className="w-full rounded-[1.5rem] border-2 border-[var(--color-ink)] bg-[var(--color-cream)] px-4 py-3 text-[var(--color-ink)] placeholder:text-[var(--color-muted)]"
         id={id}
         rows={rows}
       />

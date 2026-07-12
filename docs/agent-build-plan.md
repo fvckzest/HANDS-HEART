@@ -131,6 +131,7 @@ Build custom catalog and product detail browsing.
 
 **Tasks**
 - Implement `/shop`.
+- Add cursor-based catalog pagination with an accessible “Load more” control.
 - Implement `/products/:handle`.
 - Build product cards.
 - Build product image handling.

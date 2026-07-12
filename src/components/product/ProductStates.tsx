@@ -1,4 +1,5 @@
 import { ActionLink, ErrorState, LoadingState } from '../ui'
+import { siteCopy } from '../../content/siteCopy'
 
 export function ProductLoadingState() {
   return (
@@ -12,16 +13,15 @@ export function ProductLoadingState() {
 
 export function ProductUnconfiguredState() {
   return (
-    <section className="mx-auto max-w-3xl rounded-[2.5rem] border-2 border-[#10151b] bg-[#ffca35] p-6 shadow-[5px_5px_0_#10151b] sm:p-10">
-      <p className="inline-flex rounded-full border-2 border-[#10151b] bg-[#fff9ed] px-3 py-1 text-xs font-black uppercase tracking-[0.12em]">
-        Store setup pending
+    <section className="mx-auto max-w-3xl rounded-[2.5rem] border-2 border-[var(--color-ink)] bg-[var(--color-yellow)] p-6 shadow-[5px_5px_0_var(--color-ink)] sm:p-10">
+      <p className="inline-flex rounded-full border-2 border-[var(--color-ink)] bg-[var(--color-cream)] px-3 py-1 text-xs font-black uppercase tracking-[0.12em]">
+        {siteCopy.product.setupEyebrow}
       </p>
       <h1 className="mt-5 font-['Arial_Rounded_MT_Bold','Trebuchet_MS',sans-serif] text-4xl font-black uppercase leading-[0.95] tracking-[-0.06em] sm:text-5xl">
-        This product is waiting for its storefront connection.
+        {siteCopy.product.setupTitle}
       </h1>
       <p className="mt-5 max-w-prose text-lg leading-7">
-        Product details will appear here once the Shopify catalog is connected.
-        No request was made while the store configuration is incomplete.
+        {siteCopy.product.setupDescription}
       </p>
       <div className="mt-7">
         <ActionLink to="/shop" tone="dark" trailingIcon="→">
@@ -34,7 +34,7 @@ export function ProductUnconfiguredState() {
 
 export function ProductNotFoundState() {
   return (
-    <section className="mx-auto max-w-3xl rounded-[2.5rem] border-2 border-[#10151b] bg-[#c9b4ec] p-6 shadow-[5px_5px_0_#10151b] sm:p-10">
+    <section className="mx-auto max-w-3xl rounded-[2.5rem] border-2 border-[var(--color-ink)] bg-[var(--color-lavender)] p-6 shadow-[5px_5px_0_var(--color-ink)] sm:p-10">
       <p className="text-6xl" aria-hidden="true">♥</p>
       <h1 className="mt-4 font-['Arial_Rounded_MT_Bold','Trebuchet_MS',sans-serif] text-4xl font-black uppercase leading-[0.95] tracking-[-0.06em] sm:text-5xl">
         This piece has wandered off.

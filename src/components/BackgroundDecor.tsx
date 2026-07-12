@@ -7,7 +7,7 @@ function DotField({ className }: { className: string }) {
         <circle
           cx={8 + (index % 5) * 17}
           cy={8 + Math.floor(index / 5) * 17}
-          fill="#10151b"
+          fill="var(--color-ink)"
           key={index}
           r="3.25"
         />

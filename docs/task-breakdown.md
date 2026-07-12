@@ -40,7 +40,7 @@ configuration or data is still required for live-flow verification and launch.
 | --- | --- | --- |
 | T001 - Initialize Project Scaffold | Complete | Build, typecheck, lint, and local serve smoke check passed. |
 | T002 - Establish App Shell | Complete | Required routes, providers, shared layout, and responsive shell are in place. Visual QA completed by the project owner. |
-| T003 - Build Homepage Sections | Complete | Placeholder-safe homepage sections are in place and visually approved by the project owner. Final launch copy and product content remain required. |
+| T003 - Build Homepage Sections | Complete | Homepage sections are in place and visually approved by the project owner. Draft brand copy is now centralized; final launch approval and product content remain required. |
 | T004 - Create Shared UI Components | Complete | Reusable typed controls, states, product-card shell, and accessible field primitives are in place. |
 | T005 - Build Shopify Client | Implementation complete, verification blocked | Live verification requires Shopify store domain, public Storefront token, and API version. |
 | T006 - Implement Product Queries | Implementation complete, verification blocked | Live verification additionally requires a configured Shopify catalog. |
@@ -53,9 +53,13 @@ configuration or data is still required for live-flow verification and launch.
 | T013 - Add Metadata And SEO Utilities | Implementation complete, visual QA and live verification pending | Route titles, descriptions, canonical URLs, and Open Graph tags are in place. Product-specific metadata requires Shopify configuration, product imagery, and `VITE_PUBLIC_SITE_URL` before production verification. |
 | T014 - Add Prerendering | Implementation complete, visual QA and live product verification pending | Placeholder-mode builds emit populated static HTML for `/`, `/about`, `/shop`, and `/cart`. Product snapshots require live Shopify configuration plus explicit `SHOPIFY_PRERENDER_PRODUCT_HANDLES`. |
 | T015 - Add Cloudflare Analytics Notes Or Integration | Implementation complete, verification blocked | Cloudflare-managed Web Analytics setup is documented without adding a tracking script. Live verification requires Cloudflare account/Pages project access, a production deployment, and traffic. |
+| T016 - Complete Handoff Documentation | Implementation complete, verification blocked | Project-specific setup, deployment, content, and release-verification runbook is in `docs/handoff.md`. Live service configuration and T017 execution remain required. |
+| T018 - Add Catalog Pagination | Implementation complete, verification blocked | Cursor-based, TanStack Query-backed “Load more” pagination now appends deduplicated 24-product Shopify catalog pages after visitor action. Live verification requires Shopify configuration and catalog data to test two pages, terminal results, and follow-up failure/retry. |
 | User-approved scope addition - About / Our Story route | Implementation complete, visual QA pending | The `/about` route, navigation, route metadata, and static prerender target were added with explicit user approval. Final story/community copy remains a launch-content requirement. |
+| User-approved scope addition - Draft brand copy refresh | Implementation complete, final copy approval pending | Visitor-facing draft copy is centralized in `src/content/siteCopy.ts`; it deliberately avoids unapproved commercial claims and must receive final client approval before launch. |
 
-All remaining tasks are pending their documented dependencies.
+T017 remains pending its documented live-service dependencies and must be run
+and documented before launch.
 
 ---
 ## 3. Foundation Tasks
@@ -375,6 +379,31 @@ All remaining tasks are pending their documented dependencies.
 - Commerce flows pass in configured environment.
 - Contact form flow passes in configured environment.
 - Placeholder launch blockers are documented.
+
+### T018 - Add Catalog Pagination
+
+**Depends On**
+- T006
+- T008
+
+**Outputs**
+- Typed cursor/page-info support in the Shopify product query layer
+- TanStack Query-backed incremental catalog loading on `/shop`
+- Accessible “Load more” control with loading, retry, and terminal states
+
+**Acceptance Criteria**
+- `/shop` initially loads a bounded Shopify product page, then appends the next
+  page only when the visitor selects “Load more”.
+- No duplicate product cards appear across pages.
+- The control is absent once Shopify reports no next page.
+- Initial loading, empty, initial-error, and load-more-error states are clear.
+- No advanced filtering, search, custom checkout, or homepage-featured-product
+  behavior is added.
+
+**Verification**
+- Typecheck, lint, build, and placeholder-mode regression check pass.
+- With Shopify configured, manually verify at least two catalog pages, no
+  duplicates, exhausted-results state, and a failed follow-up request/retry.
 
 ---
 ## 10. Suggested Agent Assignment Order

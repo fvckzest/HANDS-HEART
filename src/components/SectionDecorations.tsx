@@ -6,7 +6,12 @@ import './SectionDecorations.css'
 interface SectionBounds {
   height: number
   top: number
+  variant: SectionVariant
 }
+
+type SectionVariant = 'featured' | 'story' | 'shop' | 'contact'
+
+const sectionVariants: SectionVariant[] = ['featured', 'story', 'shop', 'contact']
 
 function DotField() {
   return (
@@ -32,10 +37,10 @@ function Rays() {
   )
 }
 
-function SectionComposition({ bounds, index }: { bounds: SectionBounds; index: number }) {
+function SectionComposition({ bounds }: { bounds: SectionBounds }) {
   return (
     <div
-      className={`section-decor__composition section-decor__composition--${index + 1}`}
+      className={`section-decor__composition section-decor__composition--${bounds.variant}`}
       style={{ height: bounds.height, top: bounds.top }}
     >
       <span className="section-decor__disc section-decor__disc--primary" />
@@ -65,13 +70,14 @@ export function SectionDecorations() {
     const contentSections = Array.from(main.children).filter(
       (child): child is HTMLElement => child instanceof HTMLElement && child.tagName === 'SECTION',
     )
-    const measuredSections = contentSections.slice(1)
+    const measuredSections = contentSections.slice(1, sectionVariants.length + 1)
 
     function measure() {
       setSections(
-        measuredSections.map((section) => ({
+        measuredSections.map((section, index) => ({
           height: section.offsetHeight,
           top: section.offsetTop,
+          variant: sectionVariants[index],
         })),
       )
     }
@@ -88,8 +94,8 @@ export function SectionDecorations() {
 
   return (
     <div aria-hidden="true" className="section-decor">
-      {sections.map((bounds, index) => (
-        <SectionComposition bounds={bounds} index={index} key={bounds.top} />
+      {sections.map((bounds) => (
+        <SectionComposition bounds={bounds} key={bounds.variant} />
       ))}
     </div>
   )

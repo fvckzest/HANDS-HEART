@@ -23,7 +23,7 @@ export function VariantSelector({
 }: VariantSelectorProps) {
   if (variants.length === 0) {
     return (
-      <p className="rounded-[1.25rem] border-2 border-[#10151b] bg-[#f9a3bd] p-4 font-bold">
+      <p className="rounded-[1.25rem] border-2 border-[var(--color-ink)] bg-[var(--color-pink)] p-4 font-bold">
         Product options are not available yet.
       </p>
     )
@@ -45,11 +45,11 @@ export function VariantSelector({
             <button
               aria-pressed={isSelected}
               className={[
-                'flex min-h-14 items-center justify-between gap-3 rounded-[1.1rem] border-2 border-[#10151b] px-4 py-3 text-left font-black transition',
+                'flex min-h-14 items-center justify-between gap-3 rounded-[1.1rem] border-2 border-[var(--color-ink)] px-4 py-3 text-left font-black transition',
                 isSelected
-                  ? 'bg-[#1c64d8] text-white shadow-[2px_2px_0_#10151b]'
-                  : 'bg-[#fff9ed] hover:bg-[#9fd6f5]',
-                !variant.availableForSale && !isSelected ? 'bg-[#f3d6df] text-[#59555a]' : '',
+                  ? 'bg-[var(--color-blue)] text-[var(--color-white)] shadow-[2px_2px_0_var(--color-ink)]'
+                  : 'bg-[var(--color-cream)] hover:bg-[var(--color-sky)]',
+                !variant.availableForSale && !isSelected ? 'bg-[var(--color-pink-muted)] text-[var(--color-muted-disabled)]' : '',
               ].join(' ')}
               key={variant.id}
               onClick={() => onSelectVariant(variant)}
@@ -67,7 +67,7 @@ export function VariantSelector({
                 aria-hidden="true"
                 className={[
                   'size-3 shrink-0 rounded-full border border-current',
-                  variant.availableForSale ? 'bg-[#9edbb0]' : 'bg-[#f9a3bd]',
+                  variant.availableForSale ? 'bg-[var(--color-green)]' : 'bg-[var(--color-pink)]',
                 ].join(' ')}
               />
             </button>

@@ -10,11 +10,11 @@ export interface ButtonProps
 }
 
 const toneClasses: Record<ButtonTone, string> = {
-  dark: 'bg-[#10151b] text-[#fff9ed] hover:bg-[#26303a]',
-  cream: 'bg-[#fff9ed] text-[#10151b] hover:bg-[#fff1d8]',
-  yellow: 'bg-[#ffca35] text-[#10151b] hover:bg-[#ffd866]',
-  pink: 'bg-[#f9a3bd] text-[#10151b] hover:bg-[#ffb9cb]',
-  blue: 'bg-[#1c64d8] text-white hover:bg-[#2d78ed]',
+  dark: 'bg-[var(--color-ink)] text-[var(--color-cream)] hover:bg-[var(--color-ink-soft)]',
+  cream: 'bg-[var(--color-cream)] text-[var(--color-ink)] hover:bg-[var(--color-cream-warm)]',
+  yellow: 'bg-[var(--color-yellow)] text-[var(--color-ink)] hover:bg-[var(--color-yellow-light)]',
+  pink: 'bg-[var(--color-pink)] text-[var(--color-ink)] hover:bg-[var(--color-pink-light)]',
+  blue: 'bg-[var(--color-blue)] text-[var(--color-white)] hover:bg-[var(--color-blue-light)]',
 }
 
 export function Button({
@@ -29,7 +29,7 @@ export function Button({
     <button
       {...props}
       className={[
-        'inline-flex min-h-11 items-center justify-center gap-3 rounded-full border-2 border-[#10151b] px-5 py-2.5 font-black uppercase tracking-wide shadow-[2px_2px_0_#10151b] transition duration-150 active:translate-x-0.5 active:translate-y-0.5 active:shadow-none disabled:cursor-not-allowed disabled:opacity-55',
+        'inline-flex min-h-11 items-center justify-center gap-3 rounded-full border-2 border-[var(--color-ink)] px-5 py-2.5 font-black uppercase tracking-wide shadow-[2px_2px_0_var(--color-ink)] transition duration-150 active:translate-x-0.5 active:translate-y-0.5 active:shadow-none disabled:cursor-not-allowed disabled:opacity-55',
         toneClasses[tone],
         className,
       ]

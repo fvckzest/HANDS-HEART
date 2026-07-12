@@ -201,6 +201,7 @@ The shop page should provide a clean product grid with simple catalog controls.
 - Product grid
 - Product cards with image, title, and price
 - Product detail links using Shopify product handles
+- Cursor-based “Load more” control for catalog results beyond the initial page
 - Optional collection filter if Shopify collections are configured
 - Basic sort if available through a low-complexity Shopify query or client-side sort
 
@@ -211,6 +212,12 @@ The shop page should provide a clean product grid with simple catalog controls.
 - Inventory matrix filtering
 - Custom recommendation engine
 - Custom Shopify app development
+
+The catalog must use Shopify connection cursors for incremental loading. The
+initial catalog page and each subsequent page should be bounded; the interface
+must append results behind an accessible “Load more” control only when Shopify
+reports another page. This is pagination, not search, faceted filtering, or
+client-side duplication of the catalog.
 
 Product detail pages must support variants. Visitors should be able to select available product options, see price and availability change when required, and add only a valid selected variant to the cart.
 

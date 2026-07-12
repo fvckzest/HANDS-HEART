@@ -1,49 +1,65 @@
-# Hands Heart Website Redesign
+# Hands Heart Storefront
 
-This repository contains the planning and implementation workspace for the Hands Heart Website Redesign.
+Hands Heart is a custom React storefront for the brand's marketing pages,
+catalog, product details, and Shopify-backed cart. Shopify remains responsible
+for inventory, checkout, payment, and order completion; Cloudflare Pages hosts
+the site and its contact-form function.
 
-The project is a custom React storefront for Hands Heart, backed by Shopify for product data, cart primitives, checkout, payment, and order completion. The custom site will be hosted on Cloudflare Pages and built with React, TypeScript, Vite, Tailwind CSS, React Router, and TanStack Query.
+This repository is implementation-complete but **not launch-ready**. Shopify,
+Cloudflare, contact-delivery, domain, final content, legal links, and live-flow
+verification still require owner configuration.
 
-## Current Status
+## Run Locally
 
-The repository is in documentation-baseline mode. Application code should not be scaffolded until the docs baseline is committed.
+Use a current Node.js LTS release compatible with Vite 7 and the npm version
+that ships with it. This repository does not currently pin a Node version.
 
-## Start Here
+```sh
+npm ci
+npm run dev
+```
 
-Read these first:
+The local app intentionally supports placeholder mode. With the Shopify values
+blank, the homepage and public static routes render, while `/shop` and product
+routes show their designed configuration states instead of making live requests.
 
-1. `docs/README.md`
-2. `CONTEXT.md`
-3. `docs/prd.md`
-4. `docs/design.md`
-5. `docs/engineering.md`
-6. `docs/agent-build-plan.md`
+When you are ready to connect Shopify, use the plain-English [owner setup
+guide](docs/owner-setup-guide.md). The detailed technical [agent handoff
+runbook](docs/handoff.md) remains available for future maintenance.
 
-## Key Boundaries
+## Checks
 
-- Build a custom storefront, not a Shopify theme.
-- Use Shopify Storefront API for products, variants, cart data, and checkout handoff.
-- Use Shopify hosted checkout for payment and order completion.
-- Do not implement custom checkout.
-- Do not collect payment information in React.
-- Use placeholders only during development, never as final launch content.
+```sh
+npm run typecheck
+npm run lint
+npm run test:shopify-env
+npm run build
+npm run preview
+```
 
-## Docs
+`npm run build` type-checks, builds, and prerenders public routes. It requires a
+headless browser: the committed script uses macOS Google Chrome when available,
+otherwise Puppeteer's bundled browser (or `PUPPETEER_EXECUTABLE_PATH` when
+provided).
 
-- `docs/prd.md` - product requirements
-- `docs/design.md` - visual north star and reference interpretation
-- `docs/contract.md` - commercial scope and delivery terms
-- `docs/engineering.md` - implementation architecture
-- `docs/agent-build-plan.md` - phase-by-phase build plan
-- `docs/task-breakdown.md` - assignable implementation tickets
-- `docs/asset-checklist.md` - launch assets, access, and blockers
-- `docs/verification-checklist.md` - launch verification checklist
-- `docs/handoff-outline.md` - handoff documentation outline
-- `docs/adr/` - architecture decision records
-- `CONTEXT.md` - project glossary
-- `AGENTS.md` - agent instructions
+## Project Boundaries
 
-## Key Assets
+- React owns the custom storefront and cart UI.
+- Shopify Storefront API owns product, variant, availability, cart, and hosted
+  checkout data.
+- The browser stores only the Shopify cart ID; Shopify remains the cart source
+  of truth.
+- Cloudflare Pages hosts `dist`; its Pages Function receives contact submissions
+  at `/api/contact`.
+- React never collects payment details and never implements custom checkout.
+- `assets/reference/` contains proprietary visual references only. Do not ship,
+  export, or reuse them as production assets.
 
-- `assets/brand/heart-hands.svg` - canonical heart hands drawing for the initial launch
-- `assets/reference/` - proprietary visual north-star references for the site
+## Documentation
+
+- [Owner setup guide](docs/owner-setup-guide.md)
+- [Operational handoff runbook](docs/handoff.md)
+- [Asset and access checklist](docs/asset-checklist.md)
+- [Verification checklist](docs/verification-checklist.md)
+- [Engineering architecture](docs/engineering.md)
+- [Task breakdown](docs/task-breakdown.md)
