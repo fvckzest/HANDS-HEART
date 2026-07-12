@@ -22,7 +22,7 @@ Development may proceed with placeholders, but production launch is blocked unti
 | Heart hands drawing | Hero, brand identity, favicon/social previews | Provided | Canonical source: `assets/brand/heart-hands.svg` |
 | Logo files, if applicable | Header, footer, metadata | Needed | Use existing branding only |
 | Favicon | Browser tab, metadata | Needed | Can be derived from approved brand asset |
-| Brand colors | Tailwind theme, accents | Needed | Use restrained palette from PRD |
+| Brand colors | Tailwind theme, accents | Needed | Follow `docs/design.md` and `assets/reference/` |
 | Brand typography guidance, if any | Visual system | Optional | Otherwise choose clean contemporary type |
 
 ---

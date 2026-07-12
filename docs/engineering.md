@@ -261,20 +261,20 @@ Agents may build the site before final content arrives, but they must not treat 
 ---
 ## 13. Visual Implementation
 
-The implementation should follow the PRD visual direction: simple, clean, confident, timeless, approachable, and thoughtful.
+The implementation should follow `docs/design.md` as the binding visual direction. The proprietary images in `assets/reference/` are the true visual north star for visual implementation and override the earlier restrained visual language in the PRD where the two conflict.
 
 The frontend should prioritize:
 
-- Predominantly white layout
-- Black typography
-- Restrained color usage
-- Generous whitespace
+- Warm cream canvas
+- Bold black typography and outlines
+- Bright candy-color accents
+- Playful rounded panels, blobs, dots, arches, and linework
 - Clear product presentation
 - Strong first-viewport presence for the heart hands drawing
-- Calm, modern interaction states
+- Tactile pill-shaped navigation, buttons, filters, and cart controls
 - Responsive behavior across desktop, tablet, and mobile
 
-The visual system should support the brand without competing with the heart hands symbol. Product presentation should be simple, well-lit, and consistent.
+The visual system should feel close to the reference images while using Hands Heart-owned assets and content. Reference images must not be imported, shipped, exported, redistributed, or used as production site imagery.
 
 ---
 ## 14. Accessibility
@@ -307,7 +307,7 @@ The site should feel fast on modern devices and current mobile browsers.
 - Cache Shopify data through TanStack Query where appropriate
 - Keep route-level bundles reasonable
 
-Performance decisions should preserve the restrained visual experience. Heavy animation, large libraries, or unnecessary dynamic effects should be avoided unless they directly serve the brand experience.
+Performance decisions should preserve the playful illustrated experience without adding unnecessary weight. Heavy animation, large libraries, or unnecessary dynamic effects should be avoided unless they directly serve the brand experience.
 
 ---
 ## 16. Analytics
@@ -417,7 +417,7 @@ Agents implementing this project should treat the PRD, contract, glossary, ADRs,
 - Do not treat placeholder content as final content.
 - Do not add heavy analytics or marketing pixels for launch.
 - Do not create custom Shopify apps.
-- Preserve the restrained visual direction from the PRD.
+- Follow `docs/design.md` and inspect all images in `assets/reference/` before visual implementation.
 - Verify core commerce flows before marking work complete.
 
 When a decision is unclear, agents should prefer the simplest implementation that satisfies this document and preserves the launch scope.

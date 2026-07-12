@@ -23,7 +23,7 @@ Agents should complete phases in order unless the user explicitly reprioritizes 
 ## 2. Build Principles
 
 - Build the actual storefront, not a landing page placeholder.
-- Keep the design restrained, white, clean, and symbol-led.
+- Follow `docs/design.md` and the proprietary images in `assets/reference/` as the visual north star.
 - Use TypeScript for commerce data and form data.
 - Keep Shopify Storefront API calls inside a dedicated integration layer.
 - Use TanStack Query for Shopify-backed server state.
@@ -244,4 +244,4 @@ Agents should pause and ask the user before:
 - Changing hosting away from Cloudflare Pages.
 - Changing the stack away from React, Vite, TypeScript, Tailwind CSS, React Router, and TanStack Query.
 - Treating placeholder content as launch content.
-- Making visual changes that fight the restrained PRD direction.
+- Making visual changes that fight `docs/design.md` or the proprietary reference images.
