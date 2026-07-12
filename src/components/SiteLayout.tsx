@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router-dom'
 
+import { CartDrawer } from './cart'
 import { Footer } from './Footer'
 import { Header } from './Header'
 
@@ -14,6 +15,7 @@ export function SiteLayout() {
         <Outlet />
       </main>
       <Footer />
+      <CartDrawer />
     </div>
   )
 }

@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 
+import { useCart } from '../../features/cart'
 import type { CommerceImage, Money, Product, ProductVariant } from '../../features/shopify'
 import { Button } from '../ui'
 
@@ -36,6 +37,7 @@ function selectProductImage(
 }
 
 export function ProductDetail({ product }: ProductDetailProps) {
+  const { addItem, isMutating, openDrawer } = useCart()
   const defaultVariant = useMemo(() => initialVariant(product), [product])
   const [selectedVariantId, setSelectedVariantId] = useState<string | null>(
     defaultVariant?.id ?? null,
@@ -58,6 +60,22 @@ export function ProductDetail({ product }: ProductDetailProps) {
   const isAvailable = selectedVariant?.availableForSale ?? false
   const price = selectedVariant?.price ?? product.priceRange.minVariantPrice
   const compareAtPrice = selectedVariant?.compareAtPrice ?? null
+
+  const addSelectedVariant = async () => {
+    if (!selectedVariant || !selectedVariant.availableForSale) {
+      return
+    }
+
+    setCartNotice(null)
+
+    try {
+      await addItem(selectedVariant.id)
+      setCartNotice('Added to your Shopify bag.')
+      openDrawer()
+    } catch {
+      setCartNotice('We couldn’t add this piece just now. Please try again.')
+    }
+  }
 
   return (
     <article className="relative isolate overflow-hidden">
@@ -130,19 +148,14 @@ export function ProductDetail({ product }: ProductDetailProps) {
           <div className="mt-8 rounded-[1.6rem] border-2 border-[#10151b] bg-[#ffca35] p-4">
             <Button
               className="w-full"
-              disabled={!selectedVariant || !isAvailable}
-              onClick={() =>
-                setCartNotice(
-                  'Cart connection is pending. This variant has not been added.',
-                )
-              }
+              disabled={!selectedVariant || !isAvailable || isMutating}
+              onClick={() => void addSelectedVariant()}
               trailingIcon="→"
             >
-              {isAvailable ? 'Add to cart' : 'Unavailable'}
+              {!isAvailable ? 'Unavailable' : isMutating ? 'Adding to bag…' : 'Add to cart'}
             </Button>
             <p aria-live="polite" className="mt-3 text-sm font-bold leading-5">
-              {cartNotice ??
-                'Cart connection is coming next. Selecting a variant does not add it yet.'}
+              {cartNotice ?? 'Choose a ready-to-add variant, then add it to your Shopify bag.'}
             </p>
           </div>
         </section>

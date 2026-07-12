@@ -61,6 +61,9 @@ interface RawProductVariant {
   __typename: 'ProductVariant'
   id: string
   title: string
+  product: {
+    title: string
+  } | null
   availableForSale: boolean
   price: RawMoney
   compareAtPrice: RawMoney | null
@@ -136,6 +139,9 @@ const CART_FIELDS = `
         ... on ProductVariant {
           id
           title
+          product {
+            title
+          }
           availableForSale
           price {
             amount
@@ -291,13 +297,17 @@ function normalizeVariant(variant: RawProductVariant): ProductVariant {
 }
 
 function normalizeCartLine(line: RawCartLine): CartLine {
-  if (line.merchandise?.__typename !== 'ProductVariant') {
+  if (
+    line.merchandise?.__typename !== 'ProductVariant' ||
+    !line.merchandise.product
+  ) {
     throw new ShopifyRequestError('response')
   }
 
   return {
     id: line.id,
     quantity: line.quantity,
+    productTitle: line.merchandise.product.title,
     merchandise: normalizeVariant(line.merchandise),
     cost: {
       amountPerQuantity: normalizeMoney(line.cost.amountPerQuantity),

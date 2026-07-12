@@ -65,6 +65,7 @@ export interface Collection {
 export interface CartLine {
   id: string
   quantity: number
+  productTitle: string
   merchandise: ProductVariant
   cost: {
     amountPerQuantity: Money
