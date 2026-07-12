@@ -50,6 +50,8 @@ configuration or data is still required for live-flow verification and launch.
 | T010 - Build Cart UI | Implementation complete, visual QA and live verification pending | Shopify-backed cart ID persistence, add/update/remove mutations, accessible drawer, `/cart` fallback, and hosted checkout handoff are in place. Live verification requires Shopify configuration, cart-capable catalog data, and a real checkout URL. |
 | T011 - Build Contact Form | Implementation complete, verification blocked | Client validation and safe status states are in place; delivery verification requires the configured Pages Function and recipient/delivery route. |
 | T012 - Build Contact Pages Function | Implementation complete, verification blocked | Requires Cloudflare Pages deployment plus `CONTACT_DELIVERY_PROVIDER=webhook`, webhook destination, and optional token before live delivery can be tested. |
+| T013 - Add Metadata And SEO Utilities | Implementation complete, visual QA and live verification pending | Route titles, descriptions, canonical URLs, and Open Graph tags are in place. Product-specific metadata requires Shopify configuration, product imagery, and `VITE_PUBLIC_SITE_URL` before production verification. |
+| T015 - Add Cloudflare Analytics Notes Or Integration | Implementation complete, verification blocked | Cloudflare-managed Web Analytics setup is documented without adding a tracking script. Live verification requires Cloudflare account/Pages project access, a production deployment, and traffic. |
 
 All remaining tasks are pending their documented dependencies.
 

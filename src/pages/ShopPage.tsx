@@ -11,8 +11,11 @@ import {
   ShopHero,
   ShopLoadingState,
 } from '../components/shop'
+import { shopMetadata, useRouteMetadata } from '../lib/seo'
 
 export function ShopPage() {
+  useRouteMetadata(shopMetadata)
+
   const configured = isShopifyConfigured()
   const configuration = getShopifyConfiguration()
   const productsQuery = useQuery({
