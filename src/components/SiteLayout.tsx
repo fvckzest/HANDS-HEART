@@ -4,6 +4,7 @@ import { BackgroundDecor } from './BackgroundDecor'
 import { CartDrawer } from './cart'
 import { Footer } from './Footer'
 import { Header } from './Header'
+import { SectionDecorations } from './SectionDecorations'
 
 export function SiteLayout() {
   return (
@@ -14,6 +15,7 @@ export function SiteLayout() {
       </a>
       <Header />
       <main className="site-main" id="main-content">
+        <SectionDecorations />
         <Outlet />
       </main>
       <Footer />
