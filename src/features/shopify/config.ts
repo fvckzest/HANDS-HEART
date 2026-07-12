@@ -17,10 +17,10 @@ interface ResolvedShopifyConfiguration {
 }
 
 function readEnvironmentValue(name: ShopifyConfigurationKey): string | null {
-  const environment = import.meta as ImportMeta & {
-    env: Partial<Record<ShopifyConfigurationKey, string | undefined>>
-  }
-  const value = environment.env[name]
+  const environment = (import.meta.env ?? {}) as Partial<
+    Record<ShopifyConfigurationKey, string | undefined>
+  >
+  const value = environment[name]
 
   return typeof value === 'string' && value.trim() !== '' ? value.trim() : null
 }

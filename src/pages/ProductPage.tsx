@@ -1,23 +1,48 @@
+import { useQuery } from '@tanstack/react-query'
 import { useParams } from 'react-router-dom'
 
-import { RoutePlaceholder } from './RoutePlaceholder'
+import {
+  fetchProductByHandle,
+  isShopifyConfigured,
+} from '../features/shopify'
+import { ProductDetail } from '../components/product/ProductDetail'
+import {
+  ProductErrorState,
+  ProductLoadingState,
+  ProductNotFoundState,
+  ProductUnconfiguredState,
+} from '../components/product/ProductStates'
 
 export function ProductPage() {
   const { handle } = useParams()
+  const isConfigured = isShopifyConfigured()
+  const normalizedHandle = handle?.trim() ?? ''
 
-  return (
-    <RoutePlaceholder
-      accent="lavender"
-      eyebrow="Product · placeholder"
-      title="A product page is taking shape."
-    >
-      <p>
-        <strong>Requested handle:</strong> {handle || 'not provided'}
-      </p>
-      <p>
-        Product details, variants, availability, and cart actions are not
-        connected until the Shopify and commerce UI tasks.
-      </p>
-    </RoutePlaceholder>
-  )
+  const productQuery = useQuery({
+    queryKey: ['shopify', 'product', normalizedHandle],
+    queryFn: () => fetchProductByHandle(normalizedHandle),
+    enabled: isConfigured && normalizedHandle.length > 0,
+  })
+
+  if (!normalizedHandle) {
+    return <ProductNotFoundState />
+  }
+
+  if (!isConfigured) {
+    return <ProductUnconfiguredState />
+  }
+
+  if (productQuery.isPending) {
+    return <ProductLoadingState />
+  }
+
+  if (productQuery.isError) {
+    return <ProductErrorState onRetry={() => void productQuery.refetch()} />
+  }
+
+  if (!productQuery.data) {
+    return <ProductNotFoundState />
+  }
+
+  return <ProductDetail product={productQuery.data} />
 }
