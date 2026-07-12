@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
 
+import { ContactForm } from '../../features/contact'
+
 import { placeholderProducts, placeholderValues, type PlaceholderProduct } from './homeContent'
 
 const heartHandsArtwork = new URL('../../../assets/brand/heart-hands.svg', import.meta.url).href
@@ -110,7 +112,5 @@ export function ShopPreviewSection() {
 }
 
 export function ContactPlacementSection() {
-  return (
-    <section aria-labelledby="contact-heading" className="relative pb-3" id="contact"><div className="relative overflow-hidden rounded-[2.5rem] border-2 border-[#10151b] bg-[#9fd6f5] p-7 shadow-[4px_4px_0_#10151b] sm:rounded-[4rem] sm:p-10"><div className="absolute -left-12 bottom-0 h-36 w-36 rounded-tr-full bg-[#ff6b2c]" /><div className="absolute -right-10 top-0 h-40 w-40 rounded-full bg-[#c9b4ec]" /><div className="relative grid items-center gap-7 md:grid-cols-[auto_1fr_auto]"><div className="grid h-24 w-24 place-items-center rounded-full border-2 border-[#10151b] bg-[#ffca35] p-3 shadow-[3px_3px_0_#10151b] sm:h-32 sm:w-32"><img alt="" aria-hidden="true" className="w-full" src={heartHandsArtwork} /></div><div><SectionEyebrow>Contact placeholder</SectionEyebrow><h2 className="mt-4 font-['Arial_Rounded_MT_Bold','Trebuchet_MS',sans-serif] text-4xl font-black uppercase leading-none tracking-[-0.065em] sm:text-5xl" id="contact-heading">Let&apos;s connect.</h2><p className="mt-3 max-w-xl text-sm leading-6 sm:text-base">Contact details and the message form will be added in a later, configured task. This section intentionally does not submit data.</p></div><a className="inline-flex w-fit items-center gap-3 rounded-full border-2 border-[#10151b] bg-[#fff9ed] px-5 py-3 font-['Arial_Rounded_MT_Bold','Trebuchet_MS',sans-serif] text-sm font-black uppercase shadow-[3px_3px_0_#10151b]" href="mailto:hello@example.com">Placeholder email <Arrow /></a></div></div></section>
-  )
+  return <ContactForm />
 }
