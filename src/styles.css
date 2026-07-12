@@ -1,6 +1,7 @@
 @import 'tailwindcss';
 
 :root {
+  --site-content-max-width: 86rem;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", sans-serif;
   color-scheme: light;
@@ -134,6 +135,34 @@ a {
 .background-decor__cluster--footer-right-arches {
   right: -4rem;
   bottom: 10rem;
+}
+
+.background-decor__extended-page-accent {
+  display: none;
+}
+
+.background-decor--home .background-decor__extended-page-accent,
+.background-decor--about .background-decor__extended-page-accent,
+.background-decor--shop .background-decor__extended-page-accent {
+  display: block;
+}
+
+.background-decor__cluster--lower-mid-left-rings {
+  top: 59%;
+  left: -3.25rem;
+  transform: rotate(-12deg) scale(0.82);
+}
+
+.background-decor__cluster--lower-right-scallop {
+  top: 79%;
+  right: -3.5rem;
+  transform: rotate(9deg) scale(0.88);
+}
+
+.background-decor__cluster--prefooter-left-arches {
+  bottom: 23rem;
+  left: -3.5rem;
+  transform: rotate(-7deg) scale(0.86);
 }
 
 .background-decor__semicircle {
@@ -281,6 +310,16 @@ a {
   bottom: 14rem;
 }
 
+.background-decor__dots--lower-left {
+  top: 65%;
+  left: 1.5%;
+}
+
+.background-decor__dots--lower-right {
+  top: 87%;
+  right: 1.5%;
+}
+
 .background-decor__rays {
   width: clamp(3.75rem, 7vw, 6rem);
 }
@@ -346,7 +385,7 @@ a {
   grid-template-columns: minmax(10rem, 1.25fr) auto minmax(7.5rem, 1.25fr);
   align-items: center;
   gap: 1rem;
-  width: min(100%, 76rem);
+  width: min(100%, var(--site-content-max-width));
   min-height: 4.75rem;
   margin: 0 auto;
   padding: 0.5rem 0.6rem 0.5rem 1rem;
@@ -458,7 +497,7 @@ a {
 .site-main {
   position: relative;
   z-index: 1;
-  width: min(100%, 76rem);
+  width: min(100%, var(--site-content-max-width));
   min-height: 50vh;
   margin: 0 auto;
   padding: clamp(2.75rem, 8vw, 6rem) clamp(1rem, 5vw, 4.5rem);
@@ -651,7 +690,7 @@ a {
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   gap: 1.5rem;
-  width: min(100%, 76rem);
+  width: min(100%, var(--site-content-max-width));
   min-height: 13rem;
   margin: 0 auto;
   padding: 3.5rem clamp(1rem, 5vw, 4.5rem) 2.5rem;
@@ -745,9 +784,20 @@ a {
     right: -4.75rem;
   }
 
+  .background-decor__cluster--lower-mid-left-rings,
+  .background-decor__cluster--prefooter-left-arches {
+    left: -4.25rem;
+  }
+
+  .background-decor__cluster--lower-right-scallop {
+    right: -4.25rem;
+  }
+
   .background-decor__dots--header-left,
   .background-decor__dots--mid-right,
-  .background-decor__dots--footer-right {
+  .background-decor__dots--footer-right,
+  .background-decor__dots--lower-left,
+  .background-decor__dots--lower-right {
     width: 3rem;
   }
 
@@ -756,8 +806,13 @@ a {
   }
 
   .background-decor__dots--mid-right,
-  .background-decor__dots--footer-right {
+  .background-decor__dots--footer-right,
+  .background-decor__dots--lower-right {
     right: -0.5rem;
+  }
+
+  .background-decor__dots--lower-left {
+    left: -0.5rem;
   }
 
   .background-decor__rays--header {

@@ -75,10 +75,27 @@ export function BackgroundDecor() {
         <span className="background-decor__arch background-decor__arch--blue" />
         <span className="background-decor__ring background-decor__ring--yellow" />
       </div>
+      <div className="background-decor__cluster background-decor__cluster--lower-mid-left-rings background-decor__extended-page-accent">
+        <span className="background-decor__ring background-decor__ring--yellow" />
+        <span className="background-decor__disc background-decor__disc--blue" />
+        <span className="background-decor__disc background-decor__disc--orange" />
+      </div>
+      <div className="background-decor__cluster background-decor__cluster--lower-right-scallop background-decor__extended-page-accent">
+        <span className="background-decor__scallop" />
+        <span className="background-decor__ring background-decor__ring--small" />
+        <span className="background-decor__disc background-decor__disc--lavender" />
+      </div>
+      <div className="background-decor__cluster background-decor__cluster--prefooter-left-arches background-decor__extended-page-accent">
+        <span className="background-decor__arch background-decor__arch--orange" />
+        <span className="background-decor__arch background-decor__arch--pink" />
+        <span className="background-decor__disc background-decor__disc--yellow" />
+      </div>
 
       <DotField className="background-decor__dots--header-left" />
       <DotField className="background-decor__dots--mid-right" />
       <DotField className="background-decor__dots--footer-right" />
+      <DotField className="background-decor__dots--lower-left background-decor__extended-page-accent" />
+      <DotField className="background-decor__dots--lower-right background-decor__extended-page-accent" />
       <Rays className="background-decor__rays--header" />
       <Rays className="background-decor__rays--mid-right" />
       <Rays className="background-decor__rays--footer-left" />
