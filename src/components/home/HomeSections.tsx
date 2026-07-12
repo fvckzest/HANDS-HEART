@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-import { ContactForm } from '../../features/contact'
+import { ContactForm, submitContactForm } from '../../features/contact'
 
 import { placeholderProducts, placeholderValues, type PlaceholderProduct } from './homeContent'
 
@@ -112,5 +112,5 @@ export function ShopPreviewSection() {
 }
 
 export function ContactPlacementSection() {
-  return <ContactForm />
+  return <ContactForm onSubmit={submitContactForm} />
 }

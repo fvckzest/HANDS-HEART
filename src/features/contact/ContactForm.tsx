@@ -17,6 +17,7 @@ const initialSubmission: ContactSubmission = {
   name: '',
   email: '',
   message: '',
+  website: '',
 }
 
 function validateSubmission(submission: ContactSubmission): ContactFormErrors {
@@ -67,6 +68,7 @@ export function ContactForm({ onSubmit }: ContactFormProps) {
       name: submission.name.trim(),
       email: submission.email.trim(),
       message: submission.message.trim(),
+      website: submission.website,
     }
     const nextErrors = validateSubmission(nextSubmission)
 
@@ -164,6 +166,18 @@ export function ContactForm({ onSubmit }: ContactFormProps) {
                 required
                 value={submission.message}
               />
+              <div aria-hidden="true" className="absolute -left-[10000px] h-px w-px overflow-hidden">
+                <label htmlFor="contact-website">Website</label>
+                <input
+                  autoComplete="off"
+                  id="contact-website"
+                  name="website"
+                  onChange={(event) => updateField('website', event.target.value)}
+                  tabIndex={-1}
+                  type="text"
+                  value={submission.website}
+                />
+              </div>
               <Button className="w-fit" disabled={status === 'submitting'} trailingIcon={<Arrow />} type="submit">
                 {status === 'submitting' ? 'Sending message' : 'Send message'}
               </Button>

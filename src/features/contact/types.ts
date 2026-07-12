@@ -2,6 +2,8 @@ export interface ContactSubmission {
   name: string
   email: string
   message: string
+  /** A hidden bot-trap field. Human visitors leave this empty. */
+  website: string
 }
 
 /**
